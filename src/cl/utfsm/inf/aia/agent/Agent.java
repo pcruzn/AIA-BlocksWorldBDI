@@ -4,6 +4,8 @@ import java.util.Iterator;
 import cl.utfsm.inf.aia.interfaces.Block;
 import cl.utfsm.inf.aia.interfaces.Table;
 import cl.utfsm.inf.aia.predicate.On;
+import cl.utfsm.inf.aia.strategies.DoNothingStrategy;
+import cl.utfsm.inf.aia.strategies.Plan;
 import cl.utfsm.inf.aia.world.AbstractWorldFactory;
 import cl.utfsm.inf.aia.world.InitialWorld;
 import cl.utfsm.inf.aia.world.WorldFactory;
@@ -50,6 +52,11 @@ public class Agent {
 		onRels.add(new On(blockB, blockC));
 		
 		// initial intent
+		// if ...
+		// do the following
+		Plan plan = new Plan(new DoNothingStrategy());
+		plan.runPlan();
+		
 		// for this time, we have set equal cases, both initial and ending
 		
 	}
