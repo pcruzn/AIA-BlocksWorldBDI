@@ -5,6 +5,7 @@ import cl.utfsm.inf.aia.interfaces.Block;
 import cl.utfsm.inf.aia.interfaces.Table;
 import cl.utfsm.inf.aia.predicate.On;
 import cl.utfsm.inf.aia.world.AbstractWorldFactory;
+import cl.utfsm.inf.aia.world.InitialWorld;
 import cl.utfsm.inf.aia.world.WorldFactory;
 
 
@@ -32,12 +33,14 @@ public class Agent {
 		// blockA is over blockB, blockB is over blockC
 		onRels.add(new On(blockA, blockB));
 		onRels.add(new On(blockB, blockC));
+		// with this, we create our initial world
+		InitialWorld initialWorld = new InitialWorld(onRels);
 		// end initial case simulation
 		
 		// initial belief
 		// thrash code, or trash? only for checking
 		System.out.println("Initial belief...");
-		onRelsIterator = onRels.iterator();
+		onRelsIterator = initialWorld.getOnRels().iterator();
 		while (onRelsIterator.hasNext()) {
 			System.out.println(onRelsIterator.next().toString());
 		}
