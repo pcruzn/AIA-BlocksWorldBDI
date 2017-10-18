@@ -1,30 +1,30 @@
 package cl.utfsm.inf.aia.agent;
 import java.util.ArrayList;
-import java.util.Iterator;
+import cl.utfsm.inf.aia.actions.Pickup;
+import cl.utfsm.inf.aia.helpers.BeliefsHelper;
 import cl.utfsm.inf.aia.interfaces.Block;
 import cl.utfsm.inf.aia.interfaces.Table;
-import cl.utfsm.inf.aia.predicate.On;
-import cl.utfsm.inf.aia.strategies.DoNothingStrategy;
-import cl.utfsm.inf.aia.strategies.Plan;
+import cl.utfsm.inf.aia.predicates.ArmEmpty;
+import cl.utfsm.inf.aia.predicates.Clear;
+import cl.utfsm.inf.aia.predicates.On;
+import cl.utfsm.inf.aia.predicates.OnTable;
+import cl.utfsm.inf.aia.predicates.Predicate;
 import cl.utfsm.inf.aia.world.AbstractWorldFactory;
-import cl.utfsm.inf.aia.world.InitialWorld;
 import cl.utfsm.inf.aia.world.WorldFactory;
 
 
 public class Agent {
 	public static void main(String[] args) {
 		// simulate initial case
-		ArrayList<On> onRels = new ArrayList<On>();
-		Iterator<On> onRelsIterator = null;
-		
+		ArrayList<Predicate> beliefs = new ArrayList<Predicate>();
+					
 		// prepare the world objects' factory
 		AbstractWorldFactory worldFactory = null;
 		worldFactory = new WorldFactory();
 		
 		// there's only one table in the world
 		Table table = worldFactory.createTable();
-		
-		// now let's create the blocks
+				// now let's create the blocks
 		Block blockA = worldFactory.createBlock();
 		blockA.setName("Block A");
 		Block blockB = worldFactory.createBlock();
@@ -32,33 +32,30 @@ public class Agent {
 		Block blockC = worldFactory.createBlock();
 		blockC.setName("Block C");
 		
-		// blockA is over blockB, blockB is over blockC
-		onRels.add(new On(blockA, blockB));
-		onRels.add(new On(blockB, blockC));
-		// with this, we create our initial world
-		InitialWorld initialWorld = new InitialWorld(onRels);
-		// end initial case simulation
+		// Initial Beliefs - BEGINNING
+		BeliefsHelper.addBelief(beliefs, new Clear(blockA));
+		BeliefsHelper.addBelief(beliefs, new On(blockA, blockB));
+		BeliefsHelper.addBelief(beliefs, new OnTable(blockB));
+		BeliefsHelper.addBelief(beliefs, new OnTable(blockC));
+		BeliefsHelper.addBelief(beliefs, new Clear(blockC));
+		BeliefsHelper.addBelief(beliefs, new ArmEmpty());
+		// Initial Beliefs - ENDING
 		
-		// initial belief
+		
+		
+		
+		// initial beliefs
 		// thrash code, or trash? only for checking
-		System.out.println("Initial belief...");
-		onRelsIterator = initialWorld.getOnRels().iterator();
-		while (onRelsIterator.hasNext()) {
-			System.out.println(onRelsIterator.next().toString());
-		}
+		System.out.println("INITIAL BELIEFS...");
 		
-		// simulated end case
-		onRels.add(new On(blockA, blockB));
-		onRels.add(new On(blockB, blockC));
+		BeliefsHelper.showBeliefs(beliefs);
 		
-		// initial intent
-		// if ...
-		// do the following
-		Plan plan = new Plan(new DoNothingStrategy());
-		plan.runPlan();
+		new Pickup(beliefs, blockC).run();
 		
-		// for this time, we have set equal cases, both initial and ending
+		System.out.println("CURRENT BELIEFS...");
 		
+		BeliefsHelper.showBeliefs(beliefs);
+				
 	}
 
 }

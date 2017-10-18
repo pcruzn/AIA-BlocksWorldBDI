@@ -1,7 +1,7 @@
-package cl.utfsm.inf.aia.predicate;
+package cl.utfsm.inf.aia.predicates;
 import cl.utfsm.inf.aia.interfaces.Block;
 
-public class On {
+public class On extends Predicate {
 	private Block block1;
 	private Block block2;
 	
@@ -12,6 +12,6 @@ public class On {
 	
 	@Override
 	public String toString() {
-		return (block1.getName() + " is On " + block2.getName());
+		return ("On " + block1.getName() + " " + block2.getName());
 	}
 }

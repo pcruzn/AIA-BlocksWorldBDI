@@ -1,6 +1,7 @@
 package cl.utfsm.inf.aia.world;
 import java.util.ArrayList;
-import cl.utfsm.inf.aia.predicate.On;
+
+import cl.utfsm.inf.aia.predicates.On;
 
 public abstract class World {
 	private ArrayList<On> onRels;
