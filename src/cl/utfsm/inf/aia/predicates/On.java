@@ -10,6 +10,14 @@ public class On extends Predicate {
 		this.block2 = block2;
 	}
 	
+	public Block getBlockUpside() {
+		return block1;
+	}
+	
+	public Block getBlockDownside() {
+		return block2;
+	}
+	
 	@Override
 	public String toString() {
 		return ("On " + block1.getName() + " " + block2.getName());

@@ -45,7 +45,8 @@ public class BeliefsHelper {
 		return false;
 	}
 	
-	public static void showBeliefs (ArrayList<Predicate> beliefs) {
+	public static void showBeliefs(ArrayList<Predicate> beliefs) {
+		System.out.println("---CURRENT BELIEFS---");
 		Iterator<Predicate> beliefsIterator = beliefs.iterator();
 		while (beliefsIterator.hasNext()) {
 			System.out.println(beliefsIterator.next().toString());

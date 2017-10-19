@@ -13,4 +13,16 @@ public class OnTable extends Predicate {
 	public String toString() {
 		return ("OnTable " + block.getName());
 	}
+
+	@Override
+	public Block getBlockUpside() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Block getBlockDownside() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

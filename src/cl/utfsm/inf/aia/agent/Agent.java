@@ -1,9 +1,12 @@
 package cl.utfsm.inf.aia.agent;
 import java.util.ArrayList;
-import cl.utfsm.inf.aia.actions.Pickup;
+import cl.utfsm.inf.aia.actions.PickUp;
 import cl.utfsm.inf.aia.helpers.BeliefsHelper;
 import cl.utfsm.inf.aia.interfaces.Block;
 import cl.utfsm.inf.aia.interfaces.Table;
+import cl.utfsm.inf.aia.plans.ClearABlock;
+import cl.utfsm.inf.aia.plans.MetaLevelPlan;
+import cl.utfsm.inf.aia.plans.MoveBlockOnClear;
 import cl.utfsm.inf.aia.predicates.ArmEmpty;
 import cl.utfsm.inf.aia.predicates.Clear;
 import cl.utfsm.inf.aia.predicates.On;
@@ -41,21 +44,25 @@ public class Agent {
 		BeliefsHelper.addBelief(beliefs, new ArmEmpty());
 		// Initial Beliefs - ENDING
 		
-		
-		
-		
-		// initial beliefs
-		// thrash code, or trash? only for checking
 		System.out.println("INITIAL BELIEFS...");
+		BeliefsHelper.showBeliefs(beliefs);
+		
+		// Iniital Intention - BEGINNING
+		String intention = "Achieve Block Stacked";
+		// Initial Intention - ENDING
+		
+		//ArrayList<Desire> desires = Options.getDesires(beliefs, intention);
+		
+		//intention = Filter.getIntention(beliefs, desires, intention);
+		
+		// found a plan
+		//beliefs = Planning.getAPlan(beliefs, intention, blockB).run();
+		
+		beliefs = new MetaLevelPlan(beliefs, blockA, blockB, blockC).run();
 		
 		BeliefsHelper.showBeliefs(beliefs);
 		
-		new Pickup(beliefs, blockC).run();
 		
-		System.out.println("CURRENT BELIEFS...");
-		
-		BeliefsHelper.showBeliefs(beliefs);
-				
 	}
 
 }
