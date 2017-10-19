@@ -27,7 +27,7 @@ public class Agent {
 		
 		// there's only one table in the world
 		Table table = worldFactory.createTable();
-				// now let's create the blocks
+		// now let's create the blocks
 		Block blockA = worldFactory.createBlock();
 		blockA.setName("Block A");
 		Block blockB = worldFactory.createBlock();
@@ -44,25 +44,17 @@ public class Agent {
 		BeliefsHelper.addBelief(beliefs, new ArmEmpty());
 		// Initial Beliefs - ENDING
 		
-		System.out.println("INITIAL BELIEFS...");
+		System.out.println("INITIAL BELIEFS...\n");
 		BeliefsHelper.showBeliefs(beliefs);
 		
-		// Iniital Intention - BEGINNING
-		String intention = "Achieve Block Stacked";
-		// Initial Intention - ENDING
-		
-		//ArrayList<Desire> desires = Options.getDesires(beliefs, intention);
-		
-		//intention = Filter.getIntention(beliefs, desires, intention);
-		
-		// found a plan
-		//beliefs = Planning.getAPlan(beliefs, intention, blockB).run();
-		
+		// MetaLevelPlan is the artifact used in the approach of BDI/procedural reasoning systems
+		// The MetaLevelPlan contains the initial intention and it calls to other 'sub plans'
+		// in order to achieve the big goal.
 		beliefs = new MetaLevelPlan(beliefs, blockA, blockB, blockC).run();
 		
+		
+		System.out.println("\nFINAL BELIEFS...");
 		BeliefsHelper.showBeliefs(beliefs);
-		
-		
 	}
 
 }

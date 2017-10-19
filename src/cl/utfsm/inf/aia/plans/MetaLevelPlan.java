@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import cl.utfsm.inf.aia.interfaces.Block;
 import cl.utfsm.inf.aia.predicates.On;
-import cl.utfsm.inf.aia.predicates.OnTable;
 import cl.utfsm.inf.aia.predicates.Predicate;
 
 public class MetaLevelPlan extends Plan{

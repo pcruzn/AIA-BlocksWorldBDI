@@ -13,14 +13,11 @@ public class ClearABlock extends Plan {
 	private Predicate current;
 		
 	public ClearABlock (ArrayList<Predicate> beliefs, Block block) {
-		super.goal = new AchieveClearBlock();
 		this.beliefs = beliefs;
 		this.blockDownside = block;
 	}
 	
-	public ClearABlock (){
-		super.goal = new AchieveClearBlock();
-	}
+
 	
 	public ArrayList<Predicate> run() {
 		Iterator<Predicate> beliefsIterator = beliefs.iterator();
