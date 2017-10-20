@@ -18,6 +18,7 @@ public class PickUp extends Action {
 		this.blockToPickup = block;
 	}
 	
+	@Override
 	public ArrayList<Predicate> run() {
 		if (BeliefsHelper.checkBelief(beliefs, new Clear(blockToPickup))
 				&& BeliefsHelper.checkBelief(beliefs, new OnTable(blockToPickup))

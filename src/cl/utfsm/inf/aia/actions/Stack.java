@@ -20,6 +20,7 @@ public class Stack extends Action {
 		this.blockY = blockY;
 	}
 	
+	@Override
 	public ArrayList<Predicate> run() {
 		if (BeliefsHelper.checkBelief(beliefs, new Clear(blockY))
 				&& BeliefsHelper.checkBelief(beliefs, new Holding(blockX))) {

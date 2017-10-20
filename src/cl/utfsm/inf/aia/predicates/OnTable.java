@@ -16,8 +16,7 @@ public class OnTable extends Predicate {
 
 	@Override
 	public Block getBlockUpside() {
-		// TODO Auto-generated method stub
-		return null;
+		return block;
 	}
 
 	@Override

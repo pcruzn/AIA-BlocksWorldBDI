@@ -1,12 +1,16 @@
+/**
+ * 
+ * A BDI implementation using the Procedural Reasoning System (PRS) approach.
+ * Pablo Cruz Navea
+ * Daniel San Martín 
+ *  
+ */
 package cl.utfsm.inf.aia.agent;
 import java.util.ArrayList;
-import cl.utfsm.inf.aia.actions.PickUp;
 import cl.utfsm.inf.aia.helpers.BeliefsHelper;
 import cl.utfsm.inf.aia.interfaces.Block;
 import cl.utfsm.inf.aia.interfaces.Table;
-import cl.utfsm.inf.aia.plans.ClearABlock;
 import cl.utfsm.inf.aia.plans.MetaLevelPlan;
-import cl.utfsm.inf.aia.plans.MoveBlockOnClear;
 import cl.utfsm.inf.aia.predicates.ArmEmpty;
 import cl.utfsm.inf.aia.predicates.Clear;
 import cl.utfsm.inf.aia.predicates.On;
@@ -16,7 +20,7 @@ import cl.utfsm.inf.aia.world.AbstractWorldFactory;
 import cl.utfsm.inf.aia.world.WorldFactory;
 
 
-public class Agent {
+public class BDIAGent {
 	public static void main(String[] args) {
 		// simulate initial case
 		ArrayList<Predicate> beliefs = new ArrayList<Predicate>();
@@ -26,6 +30,7 @@ public class Agent {
 		worldFactory = new WorldFactory();
 		
 		// there's only one table in the world
+		@SuppressWarnings("unused")
 		Table table = worldFactory.createTable();
 		// now let's create the blocks
 		Block blockA = worldFactory.createBlock();

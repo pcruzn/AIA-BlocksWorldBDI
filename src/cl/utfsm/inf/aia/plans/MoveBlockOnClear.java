@@ -16,12 +16,10 @@ public class MoveBlockOnClear extends Plan {
 		this.blockX = blockX;
 		this.blockY = blockY;
 	}
-	
-
-	
+		
 	public ArrayList<Predicate> run() {
 		beliefs = new ClearABlock(beliefs, blockX).run();
-		//beliefs = new ClearABlock(beliefs, blockY).run();
+		beliefs = new ClearABlock(beliefs, blockY).run();
 		beliefs = new PickUp(beliefs, blockX).run();
 		beliefs = new Stack(beliefs, blockX, blockY).run();
 		
